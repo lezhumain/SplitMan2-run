@@ -4,8 +4,8 @@
 FILE="$HOME/.ssh/config"
 tee -a "$FILE" > /dev/null <<EOT
 Host ovhVM_rel
-  HostName "$(DEBIAN_IP)"
-  User "$(DEBIAN_USER)"
+  HostName "$DEBIAN_IP"
+  User "$DEBIAN_USER"
   IdentityFile "$HOME/.ssh/id_releaseUser"
   Port 22
   PreferredAuthentications publickey
