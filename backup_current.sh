@@ -24,10 +24,18 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
   mkdir -p backups
   rm -rf backups/*
   cd backups
-  docker save splitman2 -o splitman2.tar
-  docker save splitman2nginx -o splitman2nginx.tar
-  docker save splitman2api -o splitman2api.tar
-  docker save mongo -o mongo.tar
-  zip -r "../SplitMan2-run_$(date +%s).zip" .
-  cd ..
+  #docker save splitman2 -o splitman2.tar
+  #docker save splitman2nginx -o splitman2nginx.tar
+  #docker save splitman2api -o splitman2api.tar
+  #docker save mongo -o mongo.tar
+  
+  IMAGE_LIST="$(docker images | grep -Eo "splitman2\w*|mongo")"
+  IFS=$'\n'
+  for IMAGE in $IMAGE_LIST
+  do
+    echo "Saving image $IMAGE"
+    docker save "$IMAGE" -o "$IMAGE.tar"
+  done
+  
+  zip -r "../SplitMan2-images_$(date +%s).zip" .
 EOF
