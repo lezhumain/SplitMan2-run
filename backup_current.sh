@@ -8,10 +8,11 @@ fi
 
 #ssh -oBatchMode=yes "${DEBIAN_USER}@${DEBIAN_IP}" bash << EOF
 ssh -oBatchMode=yes ovhVM_rel bash << EOF
-  ls -al
+  #ls -al
   cd "${DEBIAN_PATH}"
-  ls -al
+  #ls -al
   chmod +x ./*.sh
+  
   #cd ../SplitMan2
   #zip -r "../SplitMan2_$(date +%s).zip"
   #cd ../SplitMan2-API
@@ -29,7 +30,9 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
   #docker save splitman2api -o splitman2api.tar
   #docker save mongo -o mongo.tar
   
+  ls -al
   IMAGE_LIST="$(docker images | grep -Eo "splitman2\w*|mongo")"
+  echo "IMAGE_LIST: $IMAGE_LIST"
   IFS=$'\n'
   for IMAGE in $IMAGE_LIST
   do
@@ -37,5 +40,7 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
     docker save "$IMAGE" -o "$IMAGE.tar"
   done
   
-  zip -r "../SplitMan2-images_$(date +%s).zip"
+  if [ -n "$(ls)" ]; then
+    zip -r "../SplitMan2-images_$(date +%s).zip" ./
+  fi
 EOF
