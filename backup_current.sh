@@ -12,13 +12,22 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
   cd "${DEBIAN_PATH}"
   ls -al
   chmod +x ./*.sh
-  cd ../SplitMan2
-  zip -r "../SplitMan2_$(date +%s).zip"
-  cd ../SplitMan2-API
-  zip -r "../SplitMan2-API_$(date +%s).zip"
-  cd ../SplitMan2-nginx
-  zip -r "../SplitMan2-nginx_$(date +%s).zip"
-  cd ../SplitMan2-run
-  zip -r "../SplitMan2-run_$(date +%s).zip"
-  cd "${DEBIAN_PATH}"
+  #cd ../SplitMan2
+  #zip -r "../SplitMan2_$(date +%s).zip"
+  #cd ../SplitMan2-API
+  #zip -r "../SplitMan2-API_$(date +%s).zip"
+  #cd ../SplitMan2-nginx
+  #zip -r "../SplitMan2-nginx_$(date +%s).zip"
+  #cd ../SplitMan2-run
+  #zip -r "../SplitMan2-run_$(date +%s).zip"
+  
+  mkdir -p backups
+  rm -rf backups/*
+  cd backups
+  docker save splitman2 -o splitman2.tar
+  docker save splitman2nginx -o splitman2nginx.tar
+  docker save splitman2api -o splitman2api.tar
+  docker save mongo -o mongo.tar
+  zip -r "../SplitMan2-run_$(date +%s).zip" .
+  cd ..
 EOF
