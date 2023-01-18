@@ -37,5 +37,5 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
     docker save "$IMAGE" -o "$IMAGE.tar"
   done
   
-  zip -r "../SplitMan2-images_$(date +%s).zip" .
+  zip -r "../SplitMan2-images_$(date +%s).zip"
 EOF
