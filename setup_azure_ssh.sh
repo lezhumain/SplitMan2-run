@@ -18,5 +18,5 @@ echo "Added key to agent"
 if [ ! -f "$HOME/.ssh/known_hosts" ]; then
   touch "$HOME/.ssh/known_hosts"
 fi
-ssh-keyscan -t rsa 79.137.33.77 >> "$HOME/.ssh/known_hosts"
+ssh-keyscan -t rsa "$DEBIAN_IP" >> "$HOME/.ssh/known_hosts"
 cat "$HOME/.ssh/known_hosts"
