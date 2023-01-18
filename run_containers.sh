@@ -4,7 +4,7 @@ if [ -z "$DEBIAN_PATH" ]; then
   echo "Need to export DEBIAN path"
 fi
 
-scp .github/actions/waitForServer.sh "ovhVM_rel:${DEBIAN_PATH}"
+scp ./waitForServer.sh "ovhVM_rel:${DEBIAN_PATH}"
 
 ssh -oBatchMode=yes "ovhVM_rel" bash << EOF
   cd "${DEBIAN_PATH}"
