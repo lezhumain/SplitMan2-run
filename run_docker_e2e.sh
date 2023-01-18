@@ -59,8 +59,12 @@ if [ -z "$MONGO_USER" ] || [ -z "$MONGO_PASS" ]; then
   exit 1
 fi
 
-sed -i.bak -E "s|MONGO_INITDB_ROOT_USERNAME=.+$|MONGO_INITDB_ROOT_USERNAME=$MONGO_USER|" docker-compose.yml
-sed -i.bak -E "s|MONGO_INITDB_ROOT_PASSWORD=.+$|MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASS|" docker-compose.yml
+COMPOSE_FILE="docker-compose.yml"
+if [ ! -f "$COMPOSE_FILE" ]; then
+  COMPOSE_FILE="../SplitMan2-run/docker-compose.yml"
+fi
+sed -i.bak -E "s|MONGO_INITDB_ROOT_USERNAME=.+$|MONGO_INITDB_ROOT_USERNAME=$MONGO_USER|" "$COMPOSE_FILE"
+sed -i.bak -E "s|MONGO_INITDB_ROOT_PASSWORD=.+$|MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASS|" "$COMPOSE_FILE"
 
 for REPO in $TARGET_REPOS
 do
