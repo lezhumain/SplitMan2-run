@@ -31,6 +31,7 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
   #docker save mongo -o mongo.tar
   
   ls -al
+  docker images
   IMAGE_LIST="$(docker images | grep -Eo "splitman2\w*|mongo")"
   echo "IMAGE_LIST: $IMAGE_LIST"
   if [ -z "$IMAGE_LIST" ]; then
