@@ -32,7 +32,8 @@ ssh -oBatchMode=yes ovhVM_rel bash << EOF
   
   ls -al
   docker images
-  IMAGE_LIST="$(docker images | grep -Eo "splitman2\w*|mongo")"
+  docker images | grep -Eo "^(splitman2\w*)|(mongo)"
+  IMAGE_LIST="$(docker images | grep -Eo "^(splitman2\w*)|(mongo)")"
   echo "IMAGE_LIST: $IMAGE_LIST"
   if [ -z "$IMAGE_LIST" ]; then
     echo "No image to backup"
