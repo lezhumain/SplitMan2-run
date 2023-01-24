@@ -13,7 +13,7 @@ ssh -oBatchMode=yes "ovhVM_rel" bash << EOF
 
   echo "Waiting for web server"
   bash waitForServer.sh "127.0.0.1:8080"
-  bash waitForServer.sh "127.0.0.1:4200"
+  bash waitForServer.sh "127.0.0.1:80"
   bash waitForServer.sh "https://127.0.0.1:8081/api/version"
   bash waitForServer.sh "https://127.0.0.1:8081/"
 
