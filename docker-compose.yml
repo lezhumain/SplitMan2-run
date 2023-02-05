@@ -8,6 +8,8 @@ services:
       main:
         aliases:
           - mongodb
+    volumes:
+      - ./data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=""
       - MONGO_INITDB_ROOT_PASSWORD=""
