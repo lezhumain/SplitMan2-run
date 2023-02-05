@@ -9,43 +9,43 @@ services:
         aliases:
           - mongodb
     volumes:
-      - ./data:/data/db
+        - ./data:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=""
+        - MONGO_INITDB_ROOT_USERNAME=""
       - MONGO_INITDB_ROOT_PASSWORD=""
   web:
-    image: "splitman2"
-    ports:
-      - "4200:80"
-    networks:
-      main:
-        aliases:
-          - web
+      image: "splitman2"
+      ports:
+          - "4200:80"
+      networks:
+          main:
+              aliases:
+                  - web
   api:
-    image: "splitman2api"
-    ports:
-      - "8080:8080"
-    depends_on:
-      - mongodb
-    networks:
-      main:
-        aliases:
-          - api
+      image: "splitman2api"
+      ports:
+          - "8080:8080"
+      depends_on:
+          - mongodb
+      networks:
+          main:
+              aliases:
+                  - api
   nginx:
-    image: "splitman2nginx"
-    ports:
-      - "8081:443"
-    links:
-      - web:web
+      image: "splitman2nginx"
+      ports:
+          - "8081:443"
+      links:
+          - web:web
       - api:api
       - mongodb:mongodb
-    depends_on:
-      - web
+      depends_on:
+          - web
       - api
       - mongodb
-    networks:
-      main:
-        aliases:
-          - nginx
+      networks:
+          main:
+              aliases:
+                  - nginx
 networks:
-  main:
+    main:

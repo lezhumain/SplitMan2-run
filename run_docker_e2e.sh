@@ -71,7 +71,7 @@ do
   echo "$REPO"
 
   if [ "$REPO" == "SplitMan2-nginx" ]; then
-    update_dir ".." "SplitMan2-nginx" "main"
+    update_dir ".." "SplitMan2-nginx" "docker_nginx"
     #cd ../SplitMan2-nginx
     bash doBuild.sh "http://$HOST_IP" # nginx
   elif [ "$REPO" == "SplitMan2-API" ]; then
@@ -79,7 +79,7 @@ do
     #cd ../SplitMan2-API
     bash doBuild.sh "https://$HOST_IP:8081" # api
   elif [ "$REPO" == "SplitMan2" ]; then
-    update_dir ".." "SplitMan2" "master"
+    update_dir ".." "SplitMan2" "docker_nginx"
     #cd ../SplitMan2
     bash doBuild.sh "https://$HOST_IP:8081" "/api" # web
   else
