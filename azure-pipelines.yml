@@ -78,6 +78,7 @@ stages:
 #            displayName: 'Prepare SSL key and cert'
 
           - script: |
+              ls -alh
               cd "$SREPO"
               npm ci
               npm run e2e -- --headless=false --host="splitman2.fr:8081"
