@@ -80,6 +80,7 @@ stages:
           - script: |
               ls -alh
               cd "$SREPO"
+              ls -alh
               npm ci
               npm run e2e -- --headless=false --host="splitman2.fr:8081"
             displayName: 'Run E2E'
