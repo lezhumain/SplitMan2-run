@@ -82,7 +82,7 @@ stages:
               cd "$SREPO"
               ls -alh
               npm i
-              npm run e2e -- --headless=false --host="splitman2.fr:8081"
+              npm run e2e -- --headless=true--host="splitman2.fr:8081"
             displayName: 'Run E2E'
 
 #          - task: DownloadSecureFile@1
