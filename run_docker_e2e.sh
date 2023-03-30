@@ -75,7 +75,7 @@ do
     #cd ../SplitMan2-nginx
     bash doBuild.sh "http://$HOST_IP" # nginx
   elif [ "$REPO" == "SplitMan2-API" ]; then
-    update_dir ".." "SplitMan2-API" "master"
+    update_dir ".." "SplitMan2-API" "fix_register1"
     #cd ../SplitMan2-API
     bash doBuild.sh "https://$HOST_IP:8081" # api
   elif [ "$REPO" == "SplitMan2" ]; then
