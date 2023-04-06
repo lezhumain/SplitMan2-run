@@ -2,8 +2,8 @@ version: "3.3"
 services:
   mongodb:
     image: "mongo"
-    ports:
-      - "27017:27017"
+    #ports:
+    #  - "27017:27017"
     networks:
       main:
         aliases:
@@ -15,16 +15,16 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=""
   web:
     image: "splitman2"
-    ports:
-      - "4200:80"
+    #ports:
+    #  - "4200:80"
     networks:
       main:
         aliases:
           - web
   api:
     image: "splitman2api"
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
     depends_on:
       - mongodb
     networks:
