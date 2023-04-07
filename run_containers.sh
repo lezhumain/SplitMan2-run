@@ -23,6 +23,9 @@ scp "./$COMPOSE_FILE" "ovhVM_rel:${DEBIAN_PATH}"
 
 ssh -oBatchMode=yes "ovhVM_rel" bash << EOF
   cd "${DEBIAN_PATH}"
+  if [ -d "SplitMan2-run" ]; then
+    cd SplitMan2-run
+  fi
   chmod +x ./*.sh
   docker-compose up -d
 
