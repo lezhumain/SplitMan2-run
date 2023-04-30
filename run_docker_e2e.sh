@@ -49,7 +49,7 @@ function update_dir()
         fi
 }
 
-export CERT_PATH="$HOME/.ssl/example" # HIDE this?
+export CERT_PATH="$HOME/.ssl/letsencrypt" # HIDE this?
 #export MONGO_USER="SECRET_TODO"
 #export MONGO_PASS="SECRET_TODO"
 
