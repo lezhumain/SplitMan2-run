@@ -8,10 +8,12 @@ USE_HTTPS="$2"
 TARGET_REPOS="$3"
 
 if [ -z "$HOST_IP" ]; then
-       # EXT ip
-       #HOST_IP="$(curl -s https://api.myip.com | jq -r .ip)"
-       # LOCAL ip
-       HOST_IP="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
+       ## EXT ip
+       ##HOST_IP="$(curl -s https://api.myip.com | jq -r .ip)"
+       ## LOCAL ip
+       #HOST_IP="$(ip addr show eth0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1)"
+       echo "HOST_IP is not defined."
+       exit 1
 fi
 
 #docker system prune -af
