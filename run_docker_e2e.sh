@@ -3,8 +3,8 @@
 set -e
 
 WORKING_DIR="$(pwd)"
-USE_HTTPS="$2"
-TARGET_REPOS="$3"
+USE_HTTPS="$1"
+TARGET_REPOS="$2"
 
 if [ -z "$HOST_IP" ]; then
        ## EXT ip
