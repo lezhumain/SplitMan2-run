@@ -33,8 +33,11 @@ stages:
 
         steps:
         - script: |
+              echo "1"
               bash ./run_docker_e2e.sh "https" "$SREPO"
+              echo "2"
               cp docker-compose.yml "$(Build.ArtifactStagingDirectory)/
+              echo "3"
           env:
               MONGO_USER: $(MONGO_USER)
               MONGO_PASS: $(MONGO_PASS)
