@@ -3,7 +3,6 @@
 set -e
 
 WORKING_DIR="$(pwd)"
-HOST_IP="$1"
 USE_HTTPS="$2"
 TARGET_REPOS="$3"
 
