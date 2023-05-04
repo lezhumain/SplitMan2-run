@@ -1,0 +1,45 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+pr:
+  branches:
+    include:
+      - '*'  # must quote since "*" is a YAML reserved character; we want a string
+
+#pr: none
+
+trigger:
+    branches:
+        include:
+            - master
+
+resources:
+    - repo: self
+
+variables:
+- group: var_groupe
+- name: SREPO
+  value: mongo
+
+stages:
+    - stage: Prepare_compose_file
+      displayName: Prepare compose file
+      jobs:
+      - job: Prepare
+        displayName: Prepare
+        pool:
+            vmImage: ubuntu-latest
+
+        steps:
+        - script: |
+              bash ./run_docker_e2e.sh "https" "$SREPO"
+              cp docker-compose.yml "$(Build.ArtifactStagingDirectory)/
+          env:
+              MONGO_USER: $(MONGO_USER)
+              MONGO_PASS: $(MONGO_PASS)
+          displayName: 'Set mongo creds in file'
+
+      - publish: '$(Build.ArtifactStagingDirectory)/docker-compose.yml'
+        displayName: 'Publish compose file'
+        artifact: docker-compose_tar
