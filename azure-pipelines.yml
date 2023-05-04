@@ -40,6 +40,6 @@ stages:
               MONGO_PASS: $(MONGO_PASS)
           displayName: 'Set mongo creds in file'
 
-      - publish: '$(Build.ArtifactStagingDirectory)/docker-compose.yml'
-        displayName: 'Publish compose file'
-        artifact: docker-compose_tar
+        - publish: '$(Build.ArtifactStagingDirectory)/docker-compose.yml'
+          displayName: 'Publish compose file'
+          artifact: docker-compose_tar
