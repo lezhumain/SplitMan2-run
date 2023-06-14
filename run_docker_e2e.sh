@@ -81,7 +81,7 @@ do
   elif [ "$REPO" == "SplitMan2" ]; then
     check_host_var
 
-    update_dir ".." "SplitMan2" "master"
+    update_dir ".." "SplitMan2" "fix_build_devops"
     #cd ../SplitMan2
     bash doBuild.sh "https://$HOST_IP:8081" "/api" # web
   elif [ "$REPO" == "mongo" ]; then
